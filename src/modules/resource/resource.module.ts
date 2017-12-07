@@ -1,18 +1,18 @@
 import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from '@nestjs/common';
 
 import { AuthMiddleware } from '../shared/middlewares/user.middleware';
-import { TemaryController } from './temary.controller';
-import { TemaryService } from './temary.service';
+import { ResourceController } from './resource.controller';
+import { ResourceService } from './resource.service';
 
 import { SharedModule } from './../shared/shared.module';
 
 @Module({
-	components: [TemaryService],
-	controllers: [TemaryController],
+	components: [ResourceService],
+	controllers: [ResourceController],
 	modules: [SharedModule]
 })
-export class TemaryModule {
+export class ResourceModule {
 	public configure(consumer: MiddlewaresConsumer) {
-		consumer.apply(AuthMiddleware).forRoutes(TemaryController);
+		//consumer.apply(AuthMiddleware).forRoutes(ResourceController);
 	}
 }
